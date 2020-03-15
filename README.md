@@ -1,6 +1,6 @@
 Dotfiles, vim 8 configurations and plugins using cool tools that can alwo work on the command line (e.g. fzf, ack, silver_searcher, autojump, ...)
 
-##### System Requirements
+#### System Requirements
 - **Vim v8+ with python3 support** (for YouCompleteMe plugin)
 - **Python 3**
 - git v1.9+ (for depth=1 clones)
@@ -8,13 +8,13 @@ Dotfiles, vim 8 configurations and plugins using cool tools that can alwo work o
 - RedHat/CentOS (currently using yum for installing optional tools, but those can be installed separately) -
 - sudo privileges to install autojump, ag, fzf, and ycm
 
-##### Installing
+#### Installing
 ```bash
     $ cd $HOME
     $ get clone --depth 1 https://github.com/tr-sw/dotfiles.git
     $ ./dotfiles/install.sh -all
 ```
-##### Install options
+#### Install options
 ```bash
   Usage:
     install.sh [options]
