@@ -382,8 +382,6 @@ set_gitconfig_user()
 
     msg_info "Creating ~/.gitconfig"
     echo "${config_contents}" > ~/.gitconfig
-
-    git
 }
 
 _config_contents() {
