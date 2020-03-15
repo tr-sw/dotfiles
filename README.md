@@ -1,7 +1,7 @@
 Dotfiles, vim 8 configurations and plugins using cool tools that can alwo work on the command line (e.g. fzf, ack, silver_searcher, autojump, ...)
 
-##### System Requirement[](http://)s
-- **Vim v8+ with python3 s[](http://)upport** (for YouCompleteMe plugin)
+##### System Requirements
+- **Vim v8+ with python3 support** (for YouCompleteMe plugin)
 - **Python 3**
 - git v1.9+ (for depth=1 clones)
 - wget (for installing tools)
@@ -9,7 +9,6 @@ Dotfiles, vim 8 configurations and plugins using cool tools that can alwo work o
 - sudo privileges to install autojump, ag, fzf, and ycm
 
 ##### Installing
-
 ```bash
     $ cd $HOME
     $ get clone --depth 1 https://github.com/tr-sw/dotfiles.git
@@ -43,5 +42,4 @@ Dotfiles, vim 8 configurations and plugins using cool tools that can alwo work o
        if and only if the git user.name and user.email are not currently set 
     2. This install will NOT backup your existing dotfiles.
     3. Autojump, AG, and YouCompleteMe require sudo privileges
-
 ```
