@@ -1,0 +1,47 @@
+#!/bin/bash -eu
+set -o errexit
+set -o pipefail
+set -o nounset
+set +o xtrace 
+
+# Config vars
+# VAR:=${VAR:=default}
+
+
+###############################################################################
+usage()
+{
+cat << EOF
+   
+   Usage:
+     ${APP}
+   
+   Options:
+   
+   Notes:
+     1.
+EOF
+exit 99
+}
+###############################################################################
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+APP="$(basename $0)"
+
+
+###
+### Functions 
+###
+
+
+
+###
+###  MAIN
+###
+
+main()
+{
+   echo "Not Implemented"
+}
+
+main "$@"

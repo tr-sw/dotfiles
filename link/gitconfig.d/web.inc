@@ -1,0 +1,3 @@
+
+[web]
+    browser = google-chrome

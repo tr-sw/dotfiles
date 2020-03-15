@@ -1,0 +1,22 @@
+
+# This is personalized
+link/gitconfig.d/user.txt
+
+!.gitkeep
+
+# prevent these recursive links
+link/bash/bash
+link/vim/vim
+link/vim/files
+link/gitconfig.d/gitconfig.d
+link/gitconfig.files/gitconfig.files
+link/gitfiles/gitfiles
+
+# reserve this for local back of dotfiles
+backups
+
+.DS_Store
+junk*
+*.SAVED
+note*
+

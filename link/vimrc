@@ -1,0 +1,22 @@
+" 
+" See these files for settings 
+"
+"
+source ~/.vim/vmrcs/config.vim
+
+source ~/.vim/vmrcs/functions.vim
+
+source ~/.vim/vmrcs/config-plugins.vim
+
+" Thanks to ideas from: https://github.com/amix/vimrc
+try
+source ~/.vim/vmrcs/config-custom.vim
+catch
+endtry
+
+" Need to expand runtimepath for fzf
+"
+" This has to match FZF_HOME setting in install script 
+" and env.d/00-setenv-fzf.bash
+
+set rtp+=~/.fzf

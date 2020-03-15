@@ -1,0 +1,48 @@
+#!/bin/bash
+set -o errexit
+set -o pipefail
+set -o nounset
+set +o xtrace 
+
+START_DIR=$(pwd)
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+APP=$(basename $0)
+source ${DIR}/lib.bash
+
+################################################################
+usage() {
+cat  << EOF
+
+   List the Top-10 largest sub-directories under '<dir'
+
+   Usage:
+     $APP <dir>
+     
+EOF
+exit 1
+}
+################################################################
+
+exit_handler() {
+  cd ${START_DIR}
+}
+trap exit_handler EXIT
+
+main()
+{
+    if [ $# -ne 1 ] ; then
+        usage
+    fi
+
+    local root_dir=$1
+
+    cd $root_dir
+
+    msg_info "Top-10 Largest Subdirectories in '$root_dir':"
+
+    find ${root_dir} ! -readable -prune -type d \
+              | du -h | sort -n -r | head -n 10
+ 
+}
+
+main "$@"

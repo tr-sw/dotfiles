@@ -1,0 +1,30 @@
+/*
+ * Filename: %%FILENAME%% 
+ *
+ * AUTHOR: %%AUTHOR%%
+ *
+ * Copyright:
+ *    Copyright (C) %%YEAR%% %%AUTHOR%%
+ *    See LICENSE file for details 
+ *
+ * Notes:
+ *
+ */
+
+#ifndef _%%FILEBASE%%_H
+#define _%%FILEBASE%%_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+
+
+
+
+#ifdef __cplusplus
+}
+#endif
+#endif /* _%%FILEBASE%%_H */
+

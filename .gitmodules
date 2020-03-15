@@ -1,0 +1,52 @@
+[submodule "link/vim/pack/plugins/start/ack"]
+	path = link/vim/pack/plugins/start/ack
+	url = https://github.com/mileszs/ack.vim.git
+    ignore = all
+[submodule "link/vim/pack/plugins/start/airline-themes"]
+	path = link/vim/pack/plugins/start/airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
+    ignore = all
+[submodule "link/vim/pack/plugins/start/airline"]
+	path = link/vim/pack/plugins/start/airline
+	url = https://github.com/vim-airline/vim-airline.git
+    ignore = all
+[submodule "link/vim/pack/plugins/start/ansible"]
+	path = link/vim/pack/plugins/start/ansible
+	url = https://github.com/pearofducks/ansible-vim.git
+    ignore = all
+[submodule "link/vim/pack/plugins/start/ctrlp"]
+	path = link/vim/pack/plugins/start/ctrlp
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+    ignore = all
+[submodule "link/vim/pack/plugins/start/fugitive"]
+	path = link/vim/pack/plugins/start/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+    ignore = all
+[submodule "link/vim/pack/plugins/start/fzf"]
+	path = link/vim/pack/plugins/start/fzf
+	url = https://github.com/junegunn/fzf.vim.git
+    ignore = all
+[submodule "link/vim/pack/plugins/start/gitgutter"]
+	path = link/vim/pack/plugins/start/gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+    ignore = all
+[submodule "link/vim/pack/plugins/start/go"]
+	path = link/vim/pack/plugins/start/go
+	url = https://github.com/fatih/vim-go.git
+    ignore = all
+[submodule "link/vim/pack/plugins/start/nerdtree"]
+	path = link/vim/pack/plugins/start/nerdtree
+	url = https://github.com/preservim/nerdtree.git
+    ignore = all
+[submodule "link/vim/pack/plugins/start/surround"]
+	path = link/vim/pack/plugins/start/surround
+	url = https://github.com/tpope/vim-surround.git
+    ignore = all
+[submodule "link/vim/pack/plugins/start/syntastic"]
+	path = link/vim/pack/plugins/start/syntastic
+	url = https://github.com/vim-syntastic/syntastic.git
+    ignore = all
+[submodule "link/vim/pack/plugins/start/ycm"]
+	path = link/vim/pack/plugins/start/ycm
+	url = https://github.com/ycm-core/YouCompleteMe.git
+    ignore = all
