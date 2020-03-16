@@ -363,6 +363,11 @@ set_gitconfig_user()
        printf "${bold}   Git user.email: ${end}"
        read -r git_email
 
+       if [[ -z "%{git_user}" || -z "${git_email}" ]] ; then
+           msg_warn "git user and/or email is empty... not setting .gitconfig."
+           return 1
+       fi
+
        local config_contents="$(_config_contents ${git_user} ${git_email})"
 
        msg_info "Ready to update ~/.gitconfig:"

@@ -39,7 +39,7 @@ msg_error() {
 
 msg_warn() {
     local msg=$1
-    printf "\n%s\n\n" "${bold}${yel}*** WARN: ${msg} ${end}${end}" 1>&2 
+    printf "\n%s\n\n" "${bold}${yel}*** WARNING: ${msg} ${end}${end}" 1>&2 
 }
 
 msg_fatal() {
