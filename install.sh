@@ -373,15 +373,16 @@ set_gitconfig_user()
        case $response in
           [Cc] ) break ;;
           [Rr] ) continue ;;
-          [Xx] ) return 1 ;;
+          [Xx] ) git_user=unset ; git_email=unset return 1 ;;
              * ) printf "\n${red}Please answer [C|c] to continue or [R|r] to re-enter.${end}"
        esac
     done
 
-    backup_gitconfig
-
-    msg_info "Creating ~/.gitconfig"
-    echo "${config_contents}" > ~/.gitconfig
+    if [[ "%{git_user}" != "unset" && "${git_email}" != "unset" ]] ; then
+        backup_gitconfig
+        msg_info "Creating ~/.gitconfig"
+        echo "${config_contents}" > ~/.gitconfig
+    fi
 }
 
 _config_contents() {
