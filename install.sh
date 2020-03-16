@@ -16,13 +16,13 @@ usage() { cat << EOF
     install.sh [options]
 
   Options:
-    --all            Install all (j,ag,ack,fzf,ycm,gitconfig) 
-    --no-j           No autojump
-    --no-ag          No ag (the_silver_searcher)
-    --no-ack         No ack advanced grep
-    --no-fzf         No fzf fuzzy file finder
-    --no-ycm         No YouCompleteMe' vim plugin (requires sudo privileges)
-    --no-gitconfig   Don't touch .gitconfig. Otherwise, set include.path = .gitconfig.d files 
+    --all              Install all (j,ag,ack,fzf,ycm,gitconfig) 
+    --no-j             No autojump
+    --no-ag            No ag (the_silver_searcher)
+    --no-ack           No ack advanced grep
+    --no-fzf           No fzf fuzzy file finder
+    --no-ycm           No YouCompleteMe' vim plugin (requires sudo privileges)
+    --no-gitconfig     Don't touch .gitconfig. Otherwise, set include.path = .gitconfig.d files 
 
   Examples:
 
@@ -88,6 +88,9 @@ declare -r _DOTFILES=( \
 declare -r _DOTFILE_DIRS=( \
   bash \
   vim \
+  )
+
+declare -r _GITCONFIG_DIRS=( \
   gitconfig.files\
   gitconfig.d \
 )
@@ -137,6 +140,18 @@ link_dotfile_dirs()
    done
 }
 
+link_gitconfig_dirs()
+{
+   msg_info "Linking gitconfig dirs:"
+
+   for gitconfig_dir in "${_GITCONFIG_DIRS[@]}" ; do
+      printf "${dim}   %-24s --> %s ${end}\n"  "~/.${gitconfig_dir}" "${DIR}/link/${gitconfig_dir}"
+      ln -sf "${DIR}/link/${gitconfig_dir}" "${HOME}/.${gitconfig_dir}"
+      [[ $? -eq 0 ]] || {
+          msg_fatal "Cannot create soft link: ~/.${gitconfig_dir} --> ${DIR}/link/${gitconfig_dir}"
+      }
+   done
+}
 
 link_binfiles()
 {
@@ -249,7 +264,6 @@ install_ag()
         msg_error "Could not install ag"
     }
 }
-
 
 
 install_ack()
@@ -384,9 +398,13 @@ set_gitconfig_user()
     done
 
     if [[ "%{git_user}" != "unset" && "${git_email}" != "unset" ]] ; then
+
         backup_gitconfig
+
         msg_info "Creating ~/.gitconfig"
         echo "${config_contents}" > ~/.gitconfig
+
+        link_gitconfig_dirs
     fi
 }
 
