@@ -8,7 +8,7 @@
 "   -> Search
 "   -> Completion
 "   -> Default Indentation
-"   -> Coding
+"   -> Coding (e.g. Templates)
 "
 "
 
@@ -248,4 +248,12 @@ augroup configgroup
     autocmd BufEnter Makefile setlocal noexpandtab
     autocmd BufEnter Makefile.inc setlocal noexpandtab
     autocmd FileType Makefile,yml,py autocmd BufWritePre <buffer> %s/\s\+$//e
+augroup END
+
+augroup templates
+    autocmd BufNewFile *.sh 0r ~/.vim/skeletons/template.sh_file
+    autocmd BufNewFile *.bash 0r ~/.vim/skeletons/template.sh_file
+    autocmd BufNewFile Makefile 0r ~/.vim/skeletons/template.makefile
+    autocmd BufNewFile *.awk 0r ~/.vim/skeletons/template.awk_file
+    autocmd BufNewFile *.h 0r ~/.vim/skeletons/template.h_file
 augroup END

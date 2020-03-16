@@ -1,7 +1,6 @@
 MAKEFLAGS += --warn-undefined-variables
 SHELL := bash
 
-# 
 # shell flags:
 #    -e exit immediately if fail
 #    -u exit with error if access undefined variable
@@ -9,8 +8,7 @@ SHELL := bash
 #    -o pipleline if any fail, all fail with rc from last command
 .SHELLFLAGS := -eu +x -o pipefail -c
 .DEFAULT_GOAL := help
-.DELETE_ON_ERROR:
-.SUFFIXES:
+
 
 DIR := $(patsubs %/,%,$(dir $(realpath $(firstword $(MAKEFILE_LIST)))))
 
@@ -27,9 +25,6 @@ help:
 	@echo "    > check-system      ... checks system requirements" 
 	@echo 
 
-#
-# Put targets and recipes here
-#
  
 all:
 	@echo 
