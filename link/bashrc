@@ -36,7 +36,8 @@ if [[ -f ~/.bash/git-prompt.sh  ]] ; then
   GIT_PS1_SHOWDIRTYSTATE=true
   GIT_PS1_SHOWSTASHSTATE=true
   GIT_PS1_SHOWUPSTREAM="auto"
-  PS1='\033[0;32m\n\u@\h:\[\033[32m\]$(__git_ps1 " (%s)")\[\033[00m\] \w \012$ '
+  # PS1='\033[0;32m\n\u@\h:\[\033[32m\]$(__git_ps1 " (%s)")\[\033[00m\] \w \012$ '
+  PS1='\033[0;32m\n\u@\h:\[\033[32m\]$(type -t __git_ps1 >/dev/null 2>&1 $$ __git_ps1 " (%s)")\[\033[00m\] \w \012$ '
 fi
 
 export PS1
