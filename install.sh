@@ -91,7 +91,7 @@ declare -r _DOTFILE_DIRS=( \
   )
 
 declare -r _GITCONFIG_DIRS=( \
-  gitconfig.files\
+  gitconfig.files \
   gitconfig.d \
 )
 
