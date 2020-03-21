@@ -17,7 +17,7 @@ if [[ -f /etc/bash_completion  ]] ; then
   source /etc/bash_completion
 fi
 
-if [[ -f ${HOME}/.fzf/it-completion.bash ]] ; then
+if [[ -f ${HOME}/.bash/git-completion.bash ]] ; then
   source ${HOME}/.bash/git-completion.bash
 fi
 
