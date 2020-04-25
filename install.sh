@@ -23,6 +23,8 @@ usage() { cat << EOF
     --no-fzf           No fzf fuzzy file finder
     --no-ycm           No YouCompleteMe' vim plugin (requires sudo privileges)
     --no-gitconfig     Don't touch .gitconfig. Otherwise, set include.path = .gitconfig.d files 
+    --gitconfig        Only update .gitconfig (user, email) and .gitconfig.d files
+    --gitconfig-force  Force update of .gitconfig (user, email) and .gitconfig.d files
 
   Examples:
 
@@ -61,6 +63,8 @@ _INSTALL_FZF=1
 _INSTALL_YCM=1
 _INSTALL_GITCONFIG=1
 _INSTALL_AUTOJUMP=1
+
+_FORCE_GITCONFIG=0
 
 ### Fuzzy file finder
 # don't change this without also changing env.d/00-setenv-fzf.bash
@@ -358,10 +362,12 @@ cd ${ycm_dir} && python3 ./install.py
 
 set_gitconfig_user()
 {
-    # don't create if global config already set
-    if [[ $(git config --list | egrep -c "^user.email|^user.email") -ne 0 ]] ; then
-       msg_info_dim  "Git user information already exists. Skipping modifications to .gitconfig"
-       return 0
+    # don't create if global config already set, unless FORCE is enabled
+    if [[ ${_FORCE_GITCONFIG} -ne 1 ]] ; then 
+        if [[ $(git config --list | egrep -c "^user.email|^user.email") -ne 0 ]] ; then
+           msg_info_dim  "Git user information already exists. Skipping modifications to .gitconfig"
+           return 0
+        fi
     fi
 
     local git_user=unset
@@ -460,18 +466,62 @@ trap exit_handler EXIT
 
 parse_opts()
 {
+
+  # Check for "all", which includes -a | --a | -all | -all
+
+  REGEX_FOR_ALL='^-{1,2}al{0,2}?$'
+
+  if [[ $1 =~ $REGEX_FOR_ALL ]] ; then 
+      return 0
+  fi
+
+  # If not "all", then check for exclusions
+
   for opt in "$@" ; do
     case $opt in
-      -a) ;;
-      -all) ;;
-      --a) ;;
-      --all) ;;
-      --no-ag) _INSTALL_AG=0 ;;
-      --no-ack) _INSTALL_ACK=0 ;;
-      --no-fzf) _INSTALL_FZF=0 ;;
-      --no-ycm) _INSTALL_YCM=0 ;;
-      --no-j) _INSTALL_AUTOJUMP=0 ;;
-      --no-gitconfig) _INSTALL_GITCONFIG=0 ;;
+
+      --no-ag)
+          _INSTALL_AG=0 
+          ;;
+
+      --no-ack) 
+          _INSTALL_ACK=0 
+          ;;
+
+      --no-fzf) 
+          _INSTALL_FZF=0 
+          ;;
+
+      --no-ycm) 
+          _INSTALL_YCM=0 
+          ;;
+
+      --no-j) 
+          _INSTALL_AUTOJUMP=0 
+         ;;
+
+      --no-gitconfig) 
+          _INSTALL_GITCONFIG=0 
+          ;;
+
+      --gitconfig) 
+          _INSTALL_AG=0 ;
+          _INSTALL_ACK=0 ;
+          _INSTALL_FZF=0 ;
+          _INSTALL_YCM=0 ;
+          _INSTALL_AUTOJUMP=0 ;
+          ;;
+
+      --gitconfig-force) 
+          _INSTALL_AG=0 ;
+          _INSTALL_ACK=0 ;
+          _INSTALL_FZF=0 ;
+          _INSTALL_YCM=0 ;
+          _INSTALL_AUTOJUMP=0 ;
+          _FORCE_GITCONFIG=1 ;
+          ;;
+
+
       *) msg_fatal "Invalid option: ${opt}" ; usage ;;
     esac
   done
