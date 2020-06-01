@@ -99,10 +99,10 @@ let mapleader=","                           "all \x commands turn into ,x
 nmap <Leader>f :Files<CR>
 nmap <Leader>t :Tags<CR>
 
-" Macors
+" Macros
 "   1) start recording using qq
 "   2) stop using q
-"   3) playback by hitting Space bar:
+"   3) playback by F12:
 "
 :nnoremap <F12> @q
 
