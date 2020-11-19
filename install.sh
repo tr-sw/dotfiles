@@ -219,7 +219,7 @@ install_fzf()
 
     msg_info "Installing 'fzf' (fuzzy file finder)"
 
-    ${FZF_HOME}/install --bin --64 --no-update-rc
+    ${FZF_HOME}/install --bin --no-update-rc
     [[ $? -eq 0 && -f ${FZF_HOME}/bin/fzf ]] || {
         msg_error "Could not install fzf binary" ;
         return 1
@@ -263,7 +263,7 @@ install_ag()
     }
 
     msg_info "Installing 'ag': sudo yum install -y the_silver_searcher"
-    sudo install -y the_silver_searcher
+    sudo yum install -y the_silver_searcher
     [[ $? -eq 0 ]] || {
         msg_error "Could not install ag"
     }
