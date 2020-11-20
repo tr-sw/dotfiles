@@ -10,7 +10,7 @@ APP=$(basename $0)
 source ${DIR}/lib.bash
 
 # TODO: use array of exclude dirs
-EXCLUDE_DIR=".git/*"
+EXCLUDE_DIR="*/.git/*"
 
 ################################################################
 usage() {
@@ -42,7 +42,7 @@ main()
     cd $root_dir
 
     msg_info "Top-10 Largest Files in '$root_dir':"
-    find $root_dir ! -readable -prune \
+    find $root_dir -readable \
                    -type f \
                    -not -path "${root_dir}/${EXCLUDE_DIR}" \
                    -printf " %-14s %p\n" |  sort -nr |  head -10
