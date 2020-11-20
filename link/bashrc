@@ -30,7 +30,7 @@ fi
 export PS1='\n\033[0;32m\n\u@\h:\033[00m \w\n$ '
 
 # Source the git bash completion file
-if [[ -f ~/.bash/git-prompt.sh  ]] ; then
+if [[ -f ~/.bash/git-prompt.sh ]] && [[ $(id -u) -ne 0 ]] ; then
   source ~/.bash/git-prompt.sh
   GIT_PS1_SHOWCOLOR_HINTS=true
   GIT_PS1_SHOWDIRTYSTATE=true
